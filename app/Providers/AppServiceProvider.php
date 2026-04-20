@@ -7,9 +7,9 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // Tambahkan kode ini agar semua link pakai HTTPS saat online
         if (config('app.env') === 'production') {
-            URL::forceScheme('https');
+    \Illuminate\Support\Facades\URL::forceScheme('https');
+}
         }
     }
 }
