@@ -1,24 +1,15 @@
-<?php
-
 namespace App\Providers;
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; // Tambahkan baris ini
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
+        // Tambahkan kode ini agar semua link pakai HTTPS saat online
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
